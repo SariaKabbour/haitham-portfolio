@@ -1,26 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand Colors */
+  --color-ink: #0a0a0a;
+  --color-ink-2: #141414;
+  --color-gold: #d4af37;
+  --color-gold-2: #b8941f;
+  --color-bone: #f5f1e8;
+  --color-mute: #8a8a8a;
+
+  /* Fonts */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--color-ink);
+  --color-foreground: var(--color-bone);
+  --color-muted: var(--color-mute);
+  --color-accent: var(--color-gold);
+
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+
+  /* Extended palette */
+  --color-ink: var(--color-ink);
+  --color-ink-2: var(--color-ink-2);
+  --color-gold: var(--color-gold);
+  --color-gold-2: var(--color-gold-2);
+  --color-bone: var(--color-bone);
+  --color-mute: var(--color-mute);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  scroll-behavior: smooth;
+  /* Respect user's motion preferences */
+  @supports (scroll-behavior: smooth) {
+    @media (prefers-reduced-motion: reduce) {
+      scroll-behavior: auto;
+    }
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ink);
+  color: var(--color-bone);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove default styles */
+* {
+  @apply box-border;
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* Smooth transitions */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    @apply transition-colors duration-300;
+  }
+}
+
+/* Disable animations if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
