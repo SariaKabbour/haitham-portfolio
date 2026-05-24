@@ -56,7 +56,7 @@ export function VideoSection() {
                     <div className="absolute inset-0 mx-auto w-full max-w-2xl h-96 bg-gradient-radial from-gold/10 to-transparent pointer-events-none blur-3xl" />
 
                     {/* Video Container */}
-                    <div className="relative w-full max-w-2xl">
+                    <div className="relative w-full max-w-sm">
                         <VideoTile
                             video={heroVideo}
                             onClick={() => setSelectedVideo(heroVideo)}
